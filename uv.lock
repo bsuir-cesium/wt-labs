@@ -5,6 +5,7 @@ requires-python = ">=3.14"
 [manifest]
 members = [
     "lab1",
+    "lab2",
     "wt-labs",
 ]
 
@@ -30,6 +31,11 @@ wheels = [
 name = "lab1"
 version = "0.1.0"
 source = { virtual = "lab1" }
+
+[[package]]
+name = "lab2"
+version = "0.1.0"
+source = { virtual = "lab2" }
 
 [[package]]
 name = "librt"
