@@ -5,11 +5,15 @@ RUN apt-get update && \
     a2enmod cgi && \
     rm -rf /var/lib/apt/lists/*
 
-COPY main.py /usr/lib/cgi-bin/main.py
-RUN chmod +x /usr/lib/cgi-bin/main.py
+COPY main.py /var/www/html/main.py
+RUN chmod +x /var/www/html/main.py
 
-RUN echo 'ScriptAlias /main.py /usr/lib/cgi-bin/main.py' \
-    > /etc/apache2/conf-enabled/cgi-alias.conf
+RUN printf '\
+<Directory /var/www/html>\n\
+    AddHandler cgi-script .py\n\
+    Options +ExecCGI\n\
+</Directory>\n\
+' > /etc/apache2/conf-enabled/cgi.conf
 
 EXPOSE 80
 
