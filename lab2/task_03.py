@@ -1,4 +1,7 @@
+#!/usr/bin/env python3
 """Render a nested structure as colored HTML (depth >= 5 levels)."""
+
+import sys
 
 LEVEL_COLORS = ["red", "blue", "green", "purple", "yellow"]
 
@@ -42,5 +45,15 @@ SAMPLE_DATA: NestedStructure = [
     "Level 1 - G",
 ]
 
+
+def run_cgi() -> None:
+    body = render_page(SAMPLE_DATA).encode("utf-8")
+    sys.stdout.write("Content-Type: text/html; charset=utf-8\r\n")
+    sys.stdout.write(f"Content-Length: {len(body)}\r\n\r\n")
+    sys.stdout.flush()
+    sys.stdout.buffer.write(body)
+    sys.stdout.buffer.flush()
+
+
 if __name__ == "__main__":
-    print(render_page(SAMPLE_DATA))
+    run_cgi()

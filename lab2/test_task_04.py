@@ -1,4 +1,4 @@
-from task4_digits import digit_sum
+from task_04 import digit_sum
 
 
 def test_digit_sum_positive() -> None:

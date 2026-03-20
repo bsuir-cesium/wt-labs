@@ -1,4 +1,4 @@
-from task2_table import generate_table
+from task_02 import generate_table
 
 
 def test_table_rows_are_numbered() -> None:

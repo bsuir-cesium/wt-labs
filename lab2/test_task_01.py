@@ -1,4 +1,4 @@
-from task1_types import classify, main
+from task_01 import classify, main
 
 
 def test_classify_int() -> None:
